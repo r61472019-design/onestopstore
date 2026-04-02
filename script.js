@@ -166,9 +166,19 @@ checkoutBtn.addEventListener('click', () => {
         alert('Your cart is empty!');
         return;
     }
-    alert('Redirecting to checkout... (Integrate with payment gateway here)');
-});
 
+    let message = "Hello, I want to order:%0A";
+
+    cart.forEach(item => {
+        message += `${item.name} x ${item.quantity} - $${item.price}%0A`;
+    });
+
+    message += `%0ATotal: $${cartTotal.textContent}`;
+
+    const phoneNumber = "917889236591"; // PUT YOUR WHATSAPP NUMBER
+
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+});
 window.addEventListener('click', (e) => {
     if (e.target === cartModal) {
         cartModal.style.display = 'none';
